@@ -1,0 +1,13 @@
+{
+    "val" : {
+        "Car" : "Cotxe",
+        "Home": "Inici",
+        "Shop": "Tenda",
+        "Contact": "Contacte",
+        "User" : "Usuari",
+        "Languages": "Llenguatges",
+        "Spanish": "Espanyol",
+        "English": "Ingles",
+        "Valencian": "Valencia"
+    }
+}

@@ -1,0 +1,39 @@
+<script type="text/javascript" src="<?php echo JS_VIEW_CONTACT ?>contact.js"></script>
+<h2>Contact</h2>
+<table>
+    <tr>
+       	<td>Nombre y Apellidos: </td>
+       		<td id="error_name"><input type="text" name="name" id="name" required="required" placeholder="Nombre" value=""/>
+      	</td>
+    </tr>
+    <tr>
+       	<td>Correo electronico: </td>
+       		<td id="error_emial"><input type="text" name="email" id="email" required="required" placeholder="Correo electronico" value=""/>
+       	</td>
+    </tr>
+    <tr>
+      	<td>Asunto: </td>
+      	<td>
+	      	<select name="matter" id="matter">
+	         	<option selected>Seleccione un asunto</option>
+	         	<option>Problemas con la pagina</option>
+	         	<option>Mejoras para la pagina</option>
+                <option>Problemas con el registro</option>
+                <option>Contacto para una promoción</option>
+                <option>Otros</option>
+	        </select>
+       	</td>
+     </tr>
+ 	<tr>
+   		<td>Mensaje: </td>
+       	<td id="error_dinfo">
+       		<textarea rows="4" cols="50" name="message" id="message"></textarea>
+       	</td>
+    </tr>
+</table>
+<br/>
+<div class="button__contact">
+	<button type="button" name="send_contact" id="send_contact">Enviar</button>
+</div>
+
+<div id="rltsendmessage" style="display: none;"></div>

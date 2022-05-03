@@ -1,0 +1,129 @@
+div.form {
+    position: absolute;
+    top: 10%;
+    left: 19%;
+    right: 19%;
+    font-size: 20px;
+    border-style: solid;
+    padding: 10px;
+    
+}
+.form input, .form select {
+    font-size: 20px;
+    margin-right: 15px;
+    text-align: center;
+}
+.form .cambio {
+    float: left;
+    margin-right: 15px;
+}
+.form .categoria {
+    
+    float: right;
+    position: relative;
+    right: 2%;
+}
+/* input#submit{
+    position: absolute;
+    bottom: 0%;
+} */
+
+
+input#matricula {
+    width: 11%;
+}
+input#bastidor {
+    width: 22%;
+}
+select#modelo {
+    width: 27%;
+}
+input#color {
+    width: 17%;
+}
+input#puertas {
+    width: 5%;
+}
+input#plazas {
+    width: 6%;
+}
+input#motor {
+    width: 32%;
+}
+input#kms {
+    width: 10%;
+}
+
+input#fmatri {
+    width: 20%;
+    font-size: 15px;
+}
+input#ciudad {
+    width: 25%;
+}
+input#precio {
+    
+    width: 100%;
+
+}
+
+
+span#error_matricula {
+    position: absolute;
+    left: 1%;
+}
+span#error_bastidor {    
+    position: absolute;
+    left: 25%;
+}
+span#error_modelo {    
+    position: absolute;
+    left: 61%;
+}
+/* /////////////////// */
+span#error_color {
+    position: absolute;
+    left: 1%;
+}
+span#error_puertas {    
+    position: absolute;
+    left: 27%;
+}
+span#error_plazas {    
+    position: absolute;
+    left: 42%;
+}
+span#error_motor {    
+    position: absolute;
+    left: 58%;
+}
+/* /////////////////// */
+span#error_kms {
+    position: absolute;
+    left: 1%;
+}
+span#error_combustible {    
+    position: absolute;
+    left: 25%;
+}
+span#error_fmatri {    
+    position: absolute;
+    left: 56%;
+}
+/* /////////////////// */
+span#error_ciudad {
+    position: absolute;
+    
+}
+span#error_cambio {    
+    position: absolute;
+    left: 1%;
+}
+span#error_categoria {    
+    position: absolute;
+    left: 69%;
+}
+/* /////////////////// */
+.error {
+    color: red;
+  }
