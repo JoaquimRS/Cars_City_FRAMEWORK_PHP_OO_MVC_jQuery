@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 			
 		<!-- CSS plantilla-->
-		<link href="view/inc/assets/css/main.css" rel="stylesheet" />
+		<link href="<?php echo SITE_PATH ?>view/inc/assets/css/main.css" rel="stylesheet" />
 		
 		<!-- Jquery libreria $ajax -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -28,37 +28,37 @@
 		
 		
 		<!-- Data-Translate -->
-		<script src="view/js/translate.js"></script>
+		<script src="<?php echo SITE_PATH ?>view/js/translate.js"></script>
 		
 		<!-- Controlador JS -->
-		<script src="module/home/controller/controller_home.js"></script>
+		<script src="<?php echo JS_VIEW_HOME ?>home.js"></script>
 		
 		<!-- CSS formurlario coche -->
-		<link rel="stylesheet" href="view/css/car_form.css">
+		<link rel="stylesheet" href="<?php echo SITE_PATH ?>view/css/car_form.css">
 		
 		<!-- CSS generico -->
-		<link rel="stylesheet" href="view/css/style.css">
+		<link rel="stylesheet" href="<?php echo SITE_PATH ?>view/css/style.css">
 
 		<!-- Promises js -->
-		<script src="view/js/promises.js"></script>
+		<script src="<?php echo SITE_PATH ?>view/js/promises.js"></script>
 
 		<!-- Search js -->
-		<script src="module/search/controller/controller_search.js"></script>
+		<!-- <script src="module/search/controller/controller_search.js"></script> -->
 		
 		<!-- Menu js -->
-		<script src="view/js/menu.js"></script>
+		<script src="<?php echo SITE_PATH ?>view/js/menu.js"></script>
 
 		<!-- Main js -->
-		<script src="view/js/main.js"></script>
+		<script src="<?php echo SITE_PATH ?>view/js/main.js"></script>
 
 		<!-- Activity js -->
-		<script src="view/js/activity.js"></script>
+		<script src="<?php echo SITE_PATH ?>view/js/activity.js"></script>
 
 		<!-- Simple modal js-->
-		<script src="view/js/modal.js"></script>
+		<script src="<?php echo SITE_PATH ?>view/js/modal.js"></script>
 		
 		<!-- Simple modal css -->
-		<link rel="stylesheet" href="view/css/modal.css">
+		<link rel="stylesheet" href="<?php echo SITE_PATH ?>view/css/modal.css">
 
 
 		

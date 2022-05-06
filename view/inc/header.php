@@ -11,12 +11,12 @@
 				<nav id="nav">
 					
 					<ul>
-						<li class="menu-click" id="menu-home"><a id="logo" href="?module=controller_home" data-tr="Home"></a></li>
+						<li class="menu-click" id="menu-home"><a id="logo" href="<?php echo SITE_PATH ?>home/view" data-tr="Home"></a></li>
 						<li class="menu-click" id="menu-shop"><a href="?module=controller_shop" data-tr="Shop"></a></li>
 						
 						<!-- <li class="menu-click" id="menu-left-sidebar" ><a href="#">Left Sidebar</a></li>
 						<li class="menu-click" id="menu-right-sidebar"><a href="#">Right Sidebar</a></li> -->
-						<li class="menu-click" id="menu-contact"><a href="/tema6_ximo/4_framework_PHP_OO_MVC/contact/view" data-tr="Contact"></a></li>
+						<li class="menu-click" id="menu-contact"><a href="<?php echo SITE_PATH ?>contact/view" data-tr="Contact"></a></li>
 						<!-- <li class="menu-click" id="menu-no-sidebar"><a href="#">No Sidebar</a></li> -->
 						<li class="settings">
 							<a href="#"><img src="<?php echo SITE_PATH ?>view/inc/images/settings.png"></a>

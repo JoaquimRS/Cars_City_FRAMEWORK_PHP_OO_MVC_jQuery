@@ -62,6 +62,8 @@
 		<!-- Simple modal css -->
 		<link rel="stylesheet" href="<?php echo SITE_PATH ?>view/css/modal.css">
 
+		<!-- Controlador JS -->
+		<script type="text/javascript" src="<?php echo JS_VIEW_CONTACT ?>contact.js"></script>
 
 		
 	</head>
