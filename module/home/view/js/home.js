@@ -258,18 +258,9 @@ function Gnews(jsonBrands) {
     })
 };
 
-function TestFunction() {
-    ajaxPromise('GET','JSON',friendlyURL("?module=home&op=categories"))
-    .then(function(result){
-        console.log(result);
-    }).catch(function(){
-        console.log("Error testing function")
-    })
-}
+
 $(document).ready(function() {
     currentMenu("menu-home");
-    console.log("Home js");
-    TestFunction();
+    // redirectShop();
     loadHome();
-
 })

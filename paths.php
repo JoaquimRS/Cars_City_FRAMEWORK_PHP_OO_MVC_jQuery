@@ -43,6 +43,13 @@
     define('JS_VIEW_HOME', SITE_PATH . 'module/home/view/js/');
     define ('VIEW_PATH_HOME', SITE_ROOT . 'module/home/view/');
 
+    //MODEL_SEARCH
+    define('DAO_SEARCH', SITE_ROOT . 'module/search/model/DAO/');
+    define('BLL_SEARCH', SITE_ROOT . 'module/search/model/BLL/');
+    define('MODEL_SEARCH', SITE_ROOT . 'module/search/model/model/');
+    define('JS_VIEW_SEARCH', SITE_PATH . 'module/search/view/js/');
+    define ('VIEW_PATH_SEARCH', SITE_ROOT . 'module/search/view/');
+
     //MODEL_SHOP
     define('UTILS_SHOP', SITE_ROOT . 'module/shop/utils/');
     define('DAO_SHOP', SITE_ROOT . 'module/shop/model/DAO/');

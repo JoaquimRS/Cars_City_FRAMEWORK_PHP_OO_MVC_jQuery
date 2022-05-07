@@ -43,7 +43,7 @@
 		<script src="<?php echo SITE_PATH ?>view/js/promises.js"></script>
 
 		<!-- Search js -->
-		<!-- <script src="module/search/controller/controller_search.js"></script> -->
+		<script src="<?php echo JS_VIEW_SEARCH ?>search.js"></script>
 		
 		<!-- Menu js -->
 		<script src="<?php echo SITE_PATH ?>view/js/menu.js"></script>

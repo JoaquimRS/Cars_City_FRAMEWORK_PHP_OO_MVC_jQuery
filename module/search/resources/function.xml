@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>brands</name>
+        <uri>brands</uri>
+    </function>
+    <function>
+        <name>categories</name>
+        <uri>categories</uri>
+    </function>
+    <function>
+        <name>cities</name>
+        <uri>cities</uri>
+    </function>
+    <function>
+        <name>filter_cities</name>
+        <uri>filter_cities</uri>
+    </function>
+</functions>
