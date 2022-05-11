@@ -14,6 +14,11 @@ function friendlyURL(url) {
     }
     return "http://ximo.com/tema6_ximo/4_framework_PHP_OO_MVC" + link;
 }
+
+function friendlyURLImages(urlImage) {
+    return "http://ximo.com/tema6_ximo/4_framework_PHP_OO_MVC/" + urlImage;
+}
+
 function modal(msg) {
 
     var modal = document.createElement("div")

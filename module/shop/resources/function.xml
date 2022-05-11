@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>view</name>
+        <uri>view</uri>
+    </function>
+    <function>
+        <name>brands_models</name>
+        <uri>brands_models</uri>
+    </function>
+    <function>
+        <name>fuels</name>
+        <uri>fuels</uri>
+    </function>
+    <function>
+        <name>categories</name>
+        <uri>categories</uri>
+    </function>
+    <function>
+        <name>cities</name>
+        <uri>cities</uri>
+    </function>
+    <function>
+        <name>cars</name>
+        <uri>cars</uri>
+    </function>
+    <function>
+        <name>related_cars</name>
+        <uri>related_cars</uri>
+    </function>
+    <function>
+        <name>car</name>
+        <uri>car</uri>
+    </function>
+    <function>
+        <name>carImages</name>
+        <uri>carImages</uri>
+    </function>
+    <function>
+        <name>filter_cars</name>
+        <uri>filter_cars</uri>
+    </function>
+    <function>
+        <name>increment_views</name>
+        <uri>increment_views</uri>
+    </function>
+    
+</functions>

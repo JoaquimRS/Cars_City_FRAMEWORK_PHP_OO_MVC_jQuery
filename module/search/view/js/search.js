@@ -39,7 +39,8 @@ function loadSearchBrands() {
                 fuel: "",
                 category: lsfilters.category,
                 city: lsfilters.city,
-                order: lsfilters.order
+                order: lsfilters.order,
+                page: "1"
 
             };
             defaultFilters.brand=selectBrand.value
@@ -93,7 +94,8 @@ function loadSearchCategories() {
                 fuel: "",
                 category: lsfilters.category,
                 city: lsfilters.city,
-                order: lsfilters.order
+                order: lsfilters.order,
+                page: "1"
 
             };
             defaultFilters.category=selectCategories.value
@@ -151,7 +153,8 @@ function loadOrder(){
                 fuel: "",
                 category: lsfilters.category,
                 city: lsfilters.city,
-                order: lsfilters.order
+                order: lsfilters.order,
+                page: "1"
 
             };
             defaultFilters.order=selectOrder.value
@@ -204,7 +207,8 @@ function loadCityOptions(Cities) {
             fuel: "",
             category: lsfilters.category,
             city: lsfilters.city,
-            order: lsfilters.order
+            order: lsfilters.order,
+            page: "1"
 
         };
         defaultFilters.city=input.value
@@ -275,7 +279,7 @@ function loadSearch() {
     cities.id="cities"
     submit.className="submit-img"
     order.id="order"
-    img.src="view/img/submit.png"
+    img.src=friendlyURLImages("view/img/submit.png")
     
 
     document.getElementById("Search").appendChild(brands)
@@ -294,7 +298,7 @@ function loadSearch() {
    
     
     $(img).click( ()=> {
-        window.location.href = "./index.php?module=controller_shop"
+        window.location.href = friendlyURL("module=shop&op=view")
         //tambe es pot utilitzar query-string
     });
     $('.search-icon').on('click', function() {
@@ -316,15 +320,7 @@ function loadSearch() {
     
 };
 
-function TestFunction() {
-    var filters=JSON.parse(localStorage.getItem("filters"))
-    ajaxPromise('POST','JSON',friendlyURL("?module=search&op=filter_cities"),filters)
-    .then(function(result){
-        console.log(result);
-    }).catch(function(error){
-        console.log(error)
-    })
-}
+
 
 $(document).ready(function () {
     try {
@@ -339,7 +335,8 @@ $(document).ready(function () {
             fuel: "",
             category: "",
             city: "",
-            order: ""
+            order: "",
+            page: "1"
 
         };
         localStorage.setItem('filters', JSON.stringify(defaultFilters))

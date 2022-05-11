@@ -12,7 +12,7 @@
 					
 					<ul>
 						<li class="menu-click" id="menu-home"><a id="logo" href="<?php echo SITE_PATH ?>home/view" data-tr="Home"></a></li>
-						<li class="menu-click" id="menu-shop"><a href="?module=controller_shop" data-tr="Shop"></a></li>
+						<li class="menu-click" id="menu-shop"><a href="<?php echo SITE_PATH ?>shop/view" data-tr="Shop"></a></li>
 						
 						<!-- <li class="menu-click" id="menu-left-sidebar" ><a href="#">Left Sidebar</a></li>
 						<li class="menu-click" id="menu-right-sidebar"><a href="#">Right Sidebar</a></li> -->

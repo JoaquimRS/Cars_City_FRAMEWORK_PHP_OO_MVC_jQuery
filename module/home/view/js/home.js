@@ -33,7 +33,7 @@ function loadCarusel(){
                 brands.className="box highlight swiper-slide"
                 brand_name.appendChild(document.createTextNode(brand.nombre_marca))
                 
-                IMG.src = "view/img/brands/"+brand.url_img
+                IMG.src = friendlyURLImages("view/img/brands/"+brand.url_img)
                 IMG.className="img-marca zoom brand onClickHome"
                 IMG.id = brand.nombre_marca
 
@@ -71,7 +71,7 @@ function loadFuels(){
             
             a_IMG.className="image left zoom"
 
-            IMG.src = "view/img/fuels/"+fuel.url_img
+            IMG.src = friendlyURLImages("view/img/fuels/"+fuel.url_img)
             IMG.id = fuel.nombre_combustible
             IMG.className = "fuel onClickHome"
             fuel_info.className = "inner"
@@ -115,7 +115,7 @@ function loadCategories(){
             
             a_IMG.className="image left zoom"
 
-            IMG.src = "view/img/categories/"+category.url_img
+            IMG.src = friendlyURLImages("view/img/categories/"+category.url_img)
             IMG.id = category.nombre_categoria
             IMG.className = "category onClickHome"
             category_info.className = "inner"
@@ -178,7 +178,7 @@ function redirectShop() {
             }
         })
         localStorage.setItem('filters', JSON.stringify(defaultFilters))
-        window.location.href = "./index.php?module=controller_shop"
+        window.location.href = friendlyURL("module=shop&op=view")
         //tambe es pot utilitzar query-string
     });
 };
@@ -261,6 +261,6 @@ function Gnews(jsonBrands) {
 
 $(document).ready(function() {
     currentMenu("menu-home");
-    // redirectShop();
+    redirectShop();
     loadHome();
 })
