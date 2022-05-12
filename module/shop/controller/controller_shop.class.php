@@ -33,6 +33,12 @@
         function increment_views() {
             echo json_encode(common::load_model('shop_model','increment_views_model',$_GET['param']));
         }
+        function user_likes() {
+            echo json_encode(common::load_model('shop_model','user_likes_model',apache_request_headers()["token"]));
+        }
+        function mod_user_like() {
+            echo json_encode(common::load_model('shop_model','mod_user_like_model',array("token"=>apache_request_headers()["token"],"idCar"=>$_GET["param"])));
+        }
         
         
     };

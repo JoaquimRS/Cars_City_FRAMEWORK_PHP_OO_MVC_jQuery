@@ -53,7 +53,7 @@
             if ($check){
                 $new_user = $this -> dao -> register_user($this->db,$infoUser);
                 $token = middleware_auth::encode($infoUser->user);
-                $_SESSION['user'] = $user;
+                $_SESSION['user'] = $infoUser->user;
                 $_SESSION['time'] = time();
 
                 return $token;

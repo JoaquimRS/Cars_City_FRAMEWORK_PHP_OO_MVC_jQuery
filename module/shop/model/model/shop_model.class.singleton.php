@@ -43,6 +43,12 @@
         public function increment_views_model($idCar) {
             return $this -> bll -> increment_views_BLL($idCar);
         }
+        public function user_likes_model($token) {
+            return $this -> bll -> user_likes_BLL($token);
+        }
+        public function mod_user_like_model($mul_info) {
+            return $this -> bll -> mod_user_like_BLL($mul_info["token"],$mul_info["idCar"]);
+        }
         
 
     }

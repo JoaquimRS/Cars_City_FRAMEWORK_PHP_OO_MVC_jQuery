@@ -44,5 +44,13 @@
         <name>increment_views</name>
         <uri>increment_views</uri>
     </function>
+    <function>
+        <name>user_likes</name>
+        <uri>user_likes</uri>
+    </function>
+    <function>
+        <name>mod_user_like</name>
+        <uri>mod_user_like</uri>
+    </function>
     
 </functions>

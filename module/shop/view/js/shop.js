@@ -893,7 +893,7 @@ function loadCars(cars, notFilters=true) {
 
             $(like).on("click", ()=>{
                 if (localStorage.getItem("token")){
-                    ajaxPromiseToken("GET","JSON","module/shop/controller/controller_shop.php?op=mod_user_like&id_car="+car.id_coche)
+                    ajaxPromiseToken("POST","JSON",friendlyURL("?module=shop&op=mod_user_like&param="+car.id_coche))
                     .then(function(jsonUserLike){
                         if(jsonUserLike.RESULT == 1) {
                             like.classList.remove("like-focus")
@@ -906,7 +906,7 @@ function loadCars(cars, notFilters=true) {
                 } else {
                     var ll = window.location.search
                     localStorage.setItem("ll",ll)
-                    window.location.href = "?module=controller_login&form=login"
+                    window.location.href = friendlyURL("?module=login")
                 }
             })
 
@@ -914,7 +914,7 @@ function loadCars(cars, notFilters=true) {
         });
         
         if (localStorage.getItem("token")){
-            ajaxPromiseToken("GET","JSON","module/shop/controller/controller_shop.php?op=select_likes")
+            ajaxPromiseToken("POST","JSON",friendlyURL("?module=shop&op=user_likes"))
             .then(function(jsonLikes){
                 $.each(jsonLikes, function (index, id_Car) {
                     likes = document.getElementById("like"+id_Car.id_coche)

@@ -1,8 +1,8 @@
 function check_activity() {
     var checkActivity = setInterval(function() {
-        var today = new Date();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        console.log(time);
+        // var today = new Date();
+        // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        // console.log(time);
         if (localStorage.getItem("token")) {
             ajaxPromiseToken("POST","JSON",friendlyURL("?module=login&op=control_user"))
                 .then((jsonControlUser)=>{
@@ -48,7 +48,6 @@ function refresh_token(){
         if (localStorage.getItem("token")) {
             ajaxPromiseToken("POST","JSON",friendlyURL("?module=login&op=refresh_token"))
                 .then((jsonToken)=>{
-                    console.log(jsonToken);
                     if (jsonToken==false) {
                         logout({error:"12",title:"Error Usuario",desc:"Por favor vuelva a iniciar sesión"})
                     } else {
