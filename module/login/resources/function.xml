@@ -21,4 +21,20 @@
         <name>logout</name>
         <uri>logout</uri>
     </function>
+    <function>
+        <name>control_user</name>
+        <uri>control_user</uri>
+    </function>
+    <function>
+        <name>activity</name>
+        <uri>activity</uri>
+    </function>
+    <function>
+        <name>refresh_cookie</name>
+        <uri>refresh_cookie</uri>
+    </function>
+    <function>
+        <name>refresh_token</name>
+        <uri>refresh_token</uri>
+    </function>
 </functions>

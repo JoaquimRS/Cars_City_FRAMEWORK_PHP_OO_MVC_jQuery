@@ -1,10 +1,10 @@
 function check_activity() {
     var checkActivity = setInterval(function() {
-        // var today = new Date();
-        // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        // console.log(time);
+        var today = new Date();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        console.log(time);
         if (localStorage.getItem("token")) {
-            ajaxPromiseToken("POST","JSON","module/login/controller/controller_login.php?op=control_user")
+            ajaxPromiseToken("POST","JSON",friendlyURL("?module=login&op=control_user"))
                 .then((jsonControlUser)=>{
                     if (jsonControlUser==false) {
                         logout({error:"12",title:"Error Usuario",desc:"Por favor vuelva a iniciar sesión"})
@@ -12,7 +12,7 @@ function check_activity() {
                 }).catch(()=>{
                     console.log("Error Control User");
             })
-            ajaxPromise("POST","JSON","module/login/controller/controller_login.php?op=activity")
+            ajaxPromise("POST","JSON",friendlyURL("?module=login&op=activity"))
                 .then((jsonActivity)=>{
                     if (jsonActivity=="inactivo") {
                         logout({error:"11",title:"Usuario inactivo",desc:"Por favor vuelva a iniciar sesión"})
@@ -32,7 +32,7 @@ function check_activity() {
 function refresh_cookie() {
     $(document).on('click', ()=>{
         if (localStorage.getItem("token")) {
-            ajaxPromise("POST","JSON","module/login/controller/controller_login.php?op=refresh_cookie")
+            ajaxPromise("POST","JSON",friendlyURL("?module=login&op=refresh_cookie"))
                 .then((jsonRefreshCookie)=>{
                     
                 }).catch(()=>{
@@ -46,8 +46,9 @@ function refresh_cookie() {
 function refresh_token(){
     var checkToken = setInterval(function() {
         if (localStorage.getItem("token")) {
-            ajaxPromiseToken("POST","JSON","module/login/controller/controller_login.php?op=refresh_token")
+            ajaxPromiseToken("POST","JSON",friendlyURL("?module=login&op=refresh_token"))
                 .then((jsonToken)=>{
+                    console.log(jsonToken);
                     if (jsonToken==false) {
                         logout({error:"12",title:"Error Usuario",desc:"Por favor vuelva a iniciar sesión"})
                     } else {

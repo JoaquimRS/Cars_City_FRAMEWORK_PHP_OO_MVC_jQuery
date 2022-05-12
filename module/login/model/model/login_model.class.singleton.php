@@ -25,6 +25,18 @@
         public function logout_model() {
             return $this -> bll -> logout_BLL();
         }
+        public function control_user_model($token) {
+            return $this -> bll -> control_user_BLL($token);
+        }
+        public function activity_model() {
+            return $this -> bll -> activity_BLL();
+        }
+        public function refresh_cookie_model() {
+            return $this -> bll -> refresh_cookie_BLL();
+        }
+        public function refresh_token_model($token) {
+            return $this -> bll -> refresh_token_BLL($token);
+        }
 
     }
 ?>

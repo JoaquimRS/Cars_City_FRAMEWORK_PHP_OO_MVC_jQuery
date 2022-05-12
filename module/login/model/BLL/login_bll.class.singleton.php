@@ -1,5 +1,5 @@
 <?php
-    
+     session_start();
 	class login_bll {
 		private $dao;
 		private $db;
@@ -25,8 +25,8 @@
                 return array('error'=>'Usuario o contraseña incorrectos','src'=>'error_login');
             } else {
                 if (password_verify($password,$res_user->contrasena)){
-                    session_start();
-                    $token = jwt_process::encode($user);
+                   
+                    $token = middleware_auth::encode($user);
                     $_SESSION['user'] = $user;
                     $_SESSION['time'] = time();
                     return $token;
@@ -52,8 +52,7 @@
             }
             if ($check){
                 $new_user = $this -> dao -> register_user($this->db,$infoUser);
-                session_start();
-                $token = jwt_process::encode($infoUser->user);
+                $token = middleware_auth::encode($infoUser->user);
                 $_SESSION['user'] = $user;
                 $_SESSION['time'] = time();
 
@@ -63,7 +62,10 @@
             }
 		}
         public function data_user_BLL($token){
-            $user = jwt_process::decode($token)->name;
+            $user = middleware_auth::decode($token)->name;
+            if ($user==false){
+                return false;
+            }
             $res_user = $this -> dao -> select_user($this->db,$user);
             return $res_user;
         }
@@ -73,6 +75,53 @@
             $_SESSION['time'] = "";
             session_destroy();
             return $_SESSION['user'];
+        }
+
+        public function control_user_BLL($token){
+            if (!isset($_SESSION['user'])){
+                return false;
+            } else {
+                $user = middleware_auth::decode($token)->name;
+                if ($user==false){
+                    return false;
+                }
+                if ($user == $_SESSION['user']){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        public function activity_BLL(){
+            if (!isset($_SESSION["time"])){
+                return "inactivo";
+            } else {
+                if ((time() - $_SESSION["time"])>=300){
+                    return "inactivo";
+                } else {
+                    return time() - $_SESSION["time"];
+                }
+            }
+        }
+
+        public function refresh_cookie_BLL(){
+            session_regenerate_id();
+            $_SESSION["time"] = time();
+            return $_SESSION["time"];
+        }
+
+        function refresh_token_BLL($token) {
+            $user = middleware_auth::decode($token)->name;
+            if ($user==false){
+                return false;
+            }
+            if ($user == $_SESSION['user']) {
+                $new_token = middleware_auth::encode($user);
+                return $new_token;
+            } else {
+                return false;
+            }
         }
 	}
 

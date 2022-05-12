@@ -15,5 +15,17 @@
         function logout() {
             echo json_encode(common::load_model('login_model','logout_model'));
         }
+        function control_user() {
+            echo json_encode(common::load_model('login_model','control_user_model',apache_request_headers()["token"]));
+        }
+        function activity() {
+            echo json_encode(common::load_model('login_model','activity_model'));
+        }
+        function refresh_cookie() {
+            echo json_encode(common::load_model('login_model','refresh_cookie_model'));
+        }
+        function refresh_token() {
+            echo json_encode(common::load_model('login_model','refresh_token_model',apache_request_headers()["token"]));
+        }
     };
 ?>
