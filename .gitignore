@@ -1,1 +1,4 @@
 /utils/mailgun.ini
+/utils/jwt.ini
+/model/db.ini
+*.ini
