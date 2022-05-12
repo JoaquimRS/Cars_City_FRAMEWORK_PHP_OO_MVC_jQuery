@@ -26,6 +26,9 @@
             }else{
                 $this -> uriFunction = 'view';
             }
+            if (($_GET['module'])==="login" && !isset($_GET['op'])) {
+                $this -> uriFunction = 'login';
+            }
         }
 
         function routingStart() {

@@ -18,6 +18,9 @@ function friendlyURL(url) {
 function friendlyURLImages(urlImage) {
     return "http://ximo.com/tema6_ximo/4_framework_PHP_OO_MVC/" + urlImage;
 }
+function friendlyURLLogin(auth) {
+    return "http://ximo.com/tema6_ximo/4_framework_PHP_OO_MVC/login/" + auth;
+}
 
 function modal(msg) {
 
@@ -61,14 +64,14 @@ function modal(msg) {
     login.onclick = ()=>{
         var ll = window.location.search
         localStorage.setItem("ll",ll)
-        window.location.href = "?module=controller_login&form=login"
+        window.location.href = friendlyURLLogin("login")
     };
 }
 
 function logout(msg){
     localStorage.removeItem("token")
     
-    ajaxPromiseToken("POST","JSON","module/login/controller/controller_login.php?op=logout")
+    ajaxPromise("POST","JSON",friendlyURL("?module=login&op=logout"))
     .then((jsonLogout)=>{
     }).catch(()=>{
         console.log("Error Logout");
@@ -78,7 +81,7 @@ function logout(msg){
     } else {
         var ll = window.location.search
         localStorage.setItem("ll",ll)
-        window.location.href = "?module=controller_login&form=login"
+        window.location.href = friendlyURLLogin("login")
     }
 
 
@@ -92,7 +95,7 @@ function loadUser(token) {
     }
 
     if (token) {
-        ajaxPromiseToken("POST","JSON","module/login/controller/controller_login.php?op=select_user")
+        ajaxPromiseToken("POST","JSON",friendlyURL("?module=login&op=data_user"))
         .then(function(jsonUser){
             if (jsonUser==false){
                // Token expirado
@@ -136,7 +139,7 @@ function loadUser(token) {
         rootDiv.id = "login_button"
         rootDiv.className = "login_button"
         div.className = "login_div"
-        img.src = "http://ximo.com/tema6_ximo/4_framework_PHP_OO_MVC/view/inc/images/user_icon.png"
+        img.src = friendlyURLImages("view/inc/images/user_icon.png")
 
         document.getElementById('nav').appendChild(rootDiv)
         rootDiv.appendChild(div)
@@ -144,9 +147,9 @@ function loadUser(token) {
         a.appendChild(img)
 
         $(a).on("click", ()=>{
-            var ll = window.location.search
+            var ll = window.location.href
             localStorage.setItem("ll",ll)
-            window.location.href = "?module=controller_login&form=login"
+            window.location.href = friendlyURLLogin("login")
         })
     }
 

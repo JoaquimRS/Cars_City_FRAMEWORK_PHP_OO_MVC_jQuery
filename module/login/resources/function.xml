@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>login</name>
+        <uri>login</uri>
+        <uri>register</uri>
+    </function>
+    <function>
+        <name>submit_login</name>
+        <uri>submit_login</uri>
+    </function>
+    <function>
+        <name>submit_register</name>
+        <uri>submit_register</uri>
+    </function>
+    <function>
+        <name>data_user</name>
+        <uri>data_user</uri>
+    </function>
+    <function>
+        <name>logout</name>
+        <uri>logout</uri>
+    </function>
+</functions>

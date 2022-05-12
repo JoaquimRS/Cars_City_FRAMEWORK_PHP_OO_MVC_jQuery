@@ -1200,19 +1200,8 @@ function queryString() {
 
 };
 
-function TestFunction() {
-    var idCar = 3
-    ajaxPromise('GET','JSON',friendlyURL("?module=shop&op=increment_views&param="+idCar))
-    .then(function(result){
-        console.log(result);
-    }).catch(function(error){
-        console.log(error)
-    }) 
-    
-}
 $(document).ready(function() {
     currentMenu("menu-shop");
     loadContent();
-    // TestFunction();
 });
 

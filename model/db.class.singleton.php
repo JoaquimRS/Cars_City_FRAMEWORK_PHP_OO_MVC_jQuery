@@ -51,5 +51,9 @@
             }
             return $this->array;
         }
+        
+        public function listar_unico($stmt) {
+            return $stmt->fetch_object();
+        }
 
     }
