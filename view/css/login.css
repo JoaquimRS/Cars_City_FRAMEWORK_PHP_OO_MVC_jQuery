@@ -244,9 +244,14 @@ input {
 
 .forgot-pass {
     margin-top: 15px;
-    text-align: center;
-    font-size: 12px;
+    text-align: center !important;
+    font-size: 14px;
     color: #cfcfcf;
+}
+
+.forgot-pass:hover {
+    cursor: pointer;
+    color: #37c0fb;
 }
 
 .submit {
@@ -320,7 +325,9 @@ input {
     right: 190px;
     
 }
-
+.img_recover {
+    right: 24%;
+}
 
 .cont_verify {
     overflow: hidden;
@@ -330,8 +337,19 @@ input {
     margin: 0 auto 100px;
     background: #333; 
 }
+.cont_recover {
+    overflow: hidden;
+    position: relative;
+    width: 500px;
+    margin: 0 auto 100px;
+    background: #333; 
+}
 
 .verify {
+    padding: 25px;
+}
+
+.recover_div {
     padding: 25px;
 }
 

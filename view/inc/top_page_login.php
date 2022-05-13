@@ -49,6 +49,9 @@
 		<!-- Verify js -->
 		<script src="<?php echo JS_VIEW_LOGIN ?>verify.js"></script>
 
+		<!-- Recover js -->
+		<script src="<?php echo JS_VIEW_LOGIN ?>recover.js"></script>
+
 		<!-- Main js -->
 		<script src="<?php echo SITE_PATH ?>view/js/main.js"></script>
 

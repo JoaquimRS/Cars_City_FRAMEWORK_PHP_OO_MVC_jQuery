@@ -906,7 +906,7 @@ function loadCars(cars, notFilters=true) {
                 } else {
                     var ll = window.location.search
                     localStorage.setItem("ll",ll)
-                    window.location.href = friendlyURL("?module=login")
+                    window.location.href = friendlyURLLogin("login")
                 }
             })
 

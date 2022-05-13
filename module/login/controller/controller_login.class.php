@@ -6,6 +6,12 @@
         function verify() {
             common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'verify.html');
         }
+        function recover() {
+            common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'recover.html');
+        }
+        function ask_email() {
+            common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'ask_email.html');
+        }
         function submit_login(){
 			echo json_encode(common::load_model('login_model','submit_login_model',$_POST));
         }
@@ -32,6 +38,12 @@
         }
         function verify_user() {
             echo json_encode(common::load_model('login_model','verify_user_model',$_GET["param"]));
+        }
+        function recover_password() {
+            echo json_encode(common::load_model('login_model','recover_password_model',$_POST));
+        }
+        function recover_email() {
+            echo json_encode(common::load_model('login_model','recover_email_model',$_POST));
         }
     };
 ?>

@@ -40,7 +40,7 @@
 		}
         public function submit_register_BLL($infoRegister) {
             $check = true;
-            $token = common::generate_token_secure(10);
+            $token = common::generate_token_secure(20);
             $password_hash = password_hash($infoRegister['reg_password'],PASSWORD_DEFAULT);
             $avatar = "https://avatars.dicebear.com/api/avataaars/" . $infoRegister['reg_username'] . ".svg?b=%23c2c2c2&r=50";
             $infoUser = json_decode(json_encode(['user' => $infoRegister['reg_username'], 'email' => $infoRegister['reg_email'], 'password' => $password_hash, 'avatar' => $avatar, 'token'=> $token]));
@@ -141,6 +141,30 @@
             }
 
             return $this -> dao -> verify_user($this->db,$user_info->id);
+        }
+
+        function recover_password_BLL($infoRecover) {
+            $user_info = $this -> dao -> check_user($this->db,$infoRecover->token);
+            if (!isset($user_info)){
+                exit;
+            }
+            if ($infoRecover->rec_password==$infoRecover->rec_password_2){
+                $password_hash = password_hash($infoRecover->rec_password,PASSWORD_DEFAULT);
+                return $this -> dao -> recover_password($this->db,$user_info->id,$password_hash);
+            }
+        }
+        function recover_email_BLL($userEmail) {
+            $token = common::generate_token_secure(20);
+            $user_info = $this -> dao -> select_user_email($this->db,$userEmail);
+            $user_status = $this -> dao -> change_user_status($this->db,$user_info->id,$token);
+            if(!isset($user_info)){
+                exit;
+            }
+            $message = ['type' => 'recover',  
+                                'user' => $user_info->usuario,
+                                'url' => SITE_PATH."login/recover/".$token];
+            $email = json_decode(mail::send_email($message), true);
+            return array('code'=>'110','msg'=>'Se ha enviado un correo de recuperacion');
         }
 	}
 

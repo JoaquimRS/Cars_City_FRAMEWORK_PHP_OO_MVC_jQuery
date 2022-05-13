@@ -127,29 +127,34 @@ function changeForm() {
         for(var i = 0; i < images.length; i++) 
         images[i].setAttribute("src",friendlyURLImages("view/img/login/hide_password.png"))
     });
-    $(document).on("click","#password_image", ()=>{
-        var images = document.querySelectorAll("[id='password_image']");
-        var password_image = document.getElementById("password_image")
-        var show = password_image.getAttribute("show")
+    if (auth=="login"){
+        $(document).on("click","#password_image", ()=>{
+            var images = document.querySelectorAll("[id='password_image']");
+            var password_image = document.getElementById("password_image")
+            var show = password_image.getAttribute("show")
 
-        if (show=="true") {
-            document.getElementById("reg_password_2").type = "password"
-            document.getElementById("reg_password").type = "password"
-            document.getElementById("log_password").type = "password"
-            for(var i = 0; i < images.length; i++) 
-            images[i].setAttribute("src",friendlyURLImages("view/img/login/hide_password.png"))
+            if (show=="true") {
+                document.getElementById("reg_password_2").type = "password"
+                document.getElementById("reg_password").type = "password"
+                document.getElementById("log_password").type = "password"
+                for(var i = 0; i < images.length; i++) 
+                images[i].setAttribute("src",friendlyURLImages("view/img/login/hide_password.png"))
+                
+                password_image.setAttribute("show","false")
+            } else {
+                document.getElementById("reg_password_2").type = "text"
+                document.getElementById("reg_password").type = "text"
+                document.getElementById("log_password").type = "text"
+                for(var i = 0; i < images.length; i++) 
+                images[i].setAttribute("src",friendlyURLImages("view/img/login/show_password.png"))
+                
+                password_image.setAttribute("show","true")
+            }
             
-            password_image.setAttribute("show","false")
-        } else {
-            document.getElementById("reg_password_2").type = "text"
-            document.getElementById("reg_password").type = "text"
-            document.getElementById("log_password").type = "text"
-            for(var i = 0; i < images.length; i++) 
-            images[i].setAttribute("src",friendlyURLImages("view/img/login/show_password.png"))
-            
-            password_image.setAttribute("show","true")
-        }
-        
+        })
+    }
+    $(document).on("click","#forgot-pass", ()=>{
+        window.location.href = friendlyURLLogin("ask_email")
     })
     
     

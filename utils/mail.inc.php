@@ -21,6 +21,22 @@
                     </div>";
                     
                     break;
+                case 'recover';
+                    $email['fromEmail'] = 'carscity.support@gmail.com';
+                    $email['toEmail'] = 'joaquimdaweb@gmail.com';
+                    $email['inputEmail'] = 'carscity.support@gmail.com';
+                    $email['inputMatter'] = 'Verificación cuenta Cars City';
+                    $email['inputMessage'] = "
+                    <div style='background-color: #474747; height:300px; padding: 50px;'>
+                    <center><img src='http://ximo.com/tema6_ximo/4_framework_PHP_OO_MVC/view/img/ximo.png' width='50' height='50'>
+                    <h1 style='color: white;'>Hola, ".  $email["user"] . ":</h1>
+                    <p style='color: white;'>Haz click aqui para cambiar tu contraseña en Cars City:</p><br>
+                    <div style='background-color: #37c0fb; border-radius:50px; height:30px; width:230px; border: 1px white solid;'>
+                    <a style='color: white;  margin:20px;  font-size: 20px;' href=" . $email["url"] . ">Cambiar Contraseña</a>
+                    </div>
+                    </div>";
+                    
+                    break;
             }
             return self::send_mailgun($email);
         }

@@ -38,5 +38,21 @@
             $sql = "UPDATE usuarios SET verificado=1 WHERE id='$idUser'";
             return $db->ejecutar($sql);
         }
+
+        public function recover_password($db,$userID,$password_hash) {
+            $password = "UPDATE usuarios SET contrasena='$password_hash' WHERE id='$userID'";
+            $status = "UPDATE usuarios SET verificado=1 WHERE id='$userID'";
+            $db->ejecutar($password);
+            $db->ejecutar($status);
+            return "Password changed";
+        }
+
+        public function change_user_status($db,$idUser,$token) {
+            $status = "UPDATE usuarios SET verificado=0 WHERE id='$idUser'";
+            $token = "UPDATE usuarios SET token='$token' WHERE id='$idUser'";
+            $db->ejecutar($status);
+            $db->ejecutar($token);
+            return "Status changed";
+        }
     }
 ?>

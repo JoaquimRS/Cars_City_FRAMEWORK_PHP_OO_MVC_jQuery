@@ -37,7 +37,6 @@ function validateRegister() {
     var check=true;
     
     var username = validateUserReg(document.getElementById("reg_username").value)
-    var usernametext = document.getElementById("reg_username").value
     var email = validateEmailReg(document.getElementById("reg_email").value)
     var password = validatePasswordReg(document.getElementById("reg_password").value)
     var password2= validatePassword2Reg(document.getElementById("reg_password").value, document.getElementById("reg_password_2").value);
@@ -98,17 +97,17 @@ function submitRegister() {
     });
     
     ajaxPromise("POST","JSON",friendlyURL("?module=login&op=submit_register"),forminfo)
-    .then(function(json){
+    .then(function(jsonRegister){
             check=true
             try {
-                document.getElementById(json.src).innerHTML=json.error
+                document.getElementById(jsonRegister.src).innerHTML=json.error
                 check=false
-                toastr.error(json.error);
+                toastr.error(jsonRegister.error);
             } catch (error) {
             }
             if (check){
                 toastr.success("Te has registrado correctamente");
-                toastr.info(json.msg);
+                toastr.info(jsonRegister.msg);
             }
         }).catch(function(){
             console.log("Error Register")
@@ -120,9 +119,6 @@ function submitValidateRegister () {
         if (validateRegister()) {
             submitRegister();
         }
-
-        
-
     })
     $(document).on('keypress',function(key) {
         var auth = (window.location.pathname).split("/").slice(-1).toString()

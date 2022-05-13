@@ -10,6 +10,14 @@
         <uri>verify</uri>
     </function>
     <function>
+        <name>recover</name>
+        <uri>recover</uri>
+    </function>
+    <function>
+        <name>ask_email</name>
+        <uri>ask_email</uri>
+    </function>
+    <function>
         <name>submit_login</name>
         <uri>submit_login</uri>
     </function>
@@ -44,5 +52,13 @@
     <function>
         <name>verify_user</name>
         <uri>verify_user</uri>
+    </function>
+    <function>
+        <name>recover_password</name>
+        <uri>recover_password</uri>
+    </function>
+    <function>
+        <name>recover_email</name>
+        <uri>recover_email</uri>
     </function>
 </functions>
