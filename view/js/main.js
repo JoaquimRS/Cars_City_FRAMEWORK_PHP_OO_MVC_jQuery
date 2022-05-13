@@ -62,7 +62,7 @@ function modal(msg) {
         }
     });
     login.onclick = ()=>{
-        var ll = window.location.search
+        var ll = window.location.href
         localStorage.setItem("ll",ll)
         window.location.href = friendlyURLLogin("login")
     };
@@ -79,7 +79,7 @@ function logout(msg){
     if(msg){
         modal(msg);   
     } else {
-        var ll = window.location.search
+        var ll = window.location.href
         localStorage.setItem("ll",ll)
         window.location.href = friendlyURLLogin("login")
     }
@@ -167,5 +167,4 @@ function getUser() {
 
 $(document).ready(function () {
     getUser();
-
 });

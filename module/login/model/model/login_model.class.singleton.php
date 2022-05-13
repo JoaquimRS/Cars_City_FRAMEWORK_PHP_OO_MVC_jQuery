@@ -37,6 +37,10 @@
         public function refresh_token_model($token) {
             return $this -> bll -> refresh_token_BLL($token);
         }
+        public function verify_user_model($token) {
+            return $this -> bll -> verify_user_BLL($token);
+        }
+        
 
     }
 ?>

@@ -14,7 +14,6 @@ class middleware_auth {
         $JWT = new jwt();
         $payload = json_decode($JWT->decode($token, $jwt['secret']));
         if ($payload->exp<time()){
-            return "Hola";
             return false; 
         }
         return $payload;

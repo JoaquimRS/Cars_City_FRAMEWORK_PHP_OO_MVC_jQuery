@@ -6,6 +6,10 @@
         <uri>register</uri>
     </function>
     <function>
+        <name>verify</name>
+        <uri>verify</uri>
+    </function>
+    <function>
         <name>submit_login</name>
         <uri>submit_login</uri>
     </function>
@@ -36,5 +40,9 @@
     <function>
         <name>refresh_token</name>
         <uri>refresh_token</uri>
+    </function>
+    <function>
+        <name>verify_user</name>
+        <uri>verify_user</uri>
     </function>
 </functions>

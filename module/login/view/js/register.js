@@ -103,14 +103,12 @@ function submitRegister() {
             try {
                 document.getElementById(json.src).innerHTML=json.error
                 check=false
+                toastr.error(json.error);
             } catch (error) {
             }
             if (check){
                 toastr.success("Te has registrado correctamente");
-                localStorage.setItem('token',json)
-                loadLastLocation();
-            } else {
-                toastr.error(json.error);
+                toastr.info(json.msg);
             }
         }).catch(function(){
             console.log("Error Register")

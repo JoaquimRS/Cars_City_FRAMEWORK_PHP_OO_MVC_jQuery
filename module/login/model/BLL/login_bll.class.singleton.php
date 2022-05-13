@@ -25,11 +25,14 @@
                 return array('error'=>'Usuario o contraseña incorrectos','src'=>'error_login');
             } else {
                 if (password_verify($password,$res_user->contrasena)){
-                   
-                    $token = middleware_auth::encode($user);
-                    $_SESSION['user'] = $user;
-                    $_SESSION['time'] = time();
-                    return $token;
+                    if ($res_user->verificado==1){
+                        $token = middleware_auth::encode($user);
+                        $_SESSION['user'] = $user;
+                        $_SESSION['time'] = time();
+                        return $token;
+                    } else{
+                        return array('code'=>'112','msg'=>'Usuario no verificado, revise su correo para verificarlo');
+                    }
                 }else {
                     return array('error'=>'Usuario o contraseña incorrectos','src'=>'error_login');
                 }
@@ -37,9 +40,10 @@
 		}
         public function submit_register_BLL($infoRegister) {
             $check = true;
+            $token = common::generate_token_secure(10);
             $password_hash = password_hash($infoRegister['reg_password'],PASSWORD_DEFAULT);
             $avatar = "https://avatars.dicebear.com/api/avataaars/" . $infoRegister['reg_username'] . ".svg?b=%23c2c2c2&r=50";
-            $infoUser = json_decode(json_encode(['user' => $infoRegister['reg_username'], 'email' => $infoRegister['reg_email'], 'password' => $password_hash, 'avatar' => $avatar]));
+            $infoUser = json_decode(json_encode(['user' => $infoRegister['reg_username'], 'email' => $infoRegister['reg_email'], 'password' => $password_hash, 'avatar' => $avatar, 'token'=> $token]));
             $check_user = $this -> dao -> select_user($this->db,$infoUser->user);
             $check_email = $this -> dao -> select_user_email($this->db,$infoUser->email);
             if (isset($check_user)) {
@@ -52,11 +56,14 @@
             }
             if ($check){
                 $new_user = $this -> dao -> register_user($this->db,$infoUser);
-                $token = middleware_auth::encode($infoUser->user);
-                $_SESSION['user'] = $infoUser->user;
-                $_SESSION['time'] = time();
-
-                return $token;
+                if($new_user){
+                    $message = ['type' => 'verify',  
+                                'user' => $infoUser->user,
+                                'url' => SITE_PATH."login/verify/".$token];
+                    $email = json_decode(mail::send_email($message), true);
+                    return array('code'=>'110','msg'=>'Se ha enviado un correo de verificacion');
+                }
+                return array('error'=>'Algo ha ido mal al crear el token','src'=>'error_reg');
             }else {
                 return array('error'=>'Algo ha ido mal al crear el token','src'=>'error_reg');
             }
@@ -122,6 +129,18 @@
             } else {
                 return false;
             }
+        }
+        
+        function verify_user_BLL($token) {
+            $user_info = $this -> dao -> check_user($this->db,$token);
+            if (!isset($user_info)){
+                exit;
+            }
+            if ($user_info->verificado==1){
+                return "Email ya verificado";
+            }
+
+            return $this -> dao -> verify_user($this->db,$user_info->id);
         }
 	}
 

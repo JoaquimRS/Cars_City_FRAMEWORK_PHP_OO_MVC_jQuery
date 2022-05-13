@@ -40,6 +40,7 @@ button {
     padding: 90px;
 }
 
+
 .sub-cont {
     overflow: hidden;
     position: absolute;
@@ -317,5 +318,24 @@ input {
     position: absolute;
     margin-top: 5px;
     right: 190px;
+    
+}
+
+
+.cont_verify {
+    overflow: hidden;
+    position: relative;
+    width: 500px;
+    height: 200px;
+    margin: 0 auto 100px;
+    background: #333; 
+}
+
+.verify {
+    padding: 25px;
+}
+
+.error-title {
+    color: red;
     
 }

@@ -68,14 +68,16 @@ function submitLogin() {
             try {
                 document.getElementById(json.src).innerHTML=json.error
                 check=false
+                toastr.error(json.error);
             } catch (error) {
             }
+            if (json.msg){
+                toastr.info(json.msg)
+                check=false;
+            }
             if (check){
-                // toastr.success("Has iniciado sesion correctamente");
                 localStorage.setItem('token',json)
                 loadLastLocation();
-            } else {
-                toastr.error(json.error);
             }
         }).catch(function(){
             console.log("Error Login")
@@ -154,19 +156,8 @@ function changeForm() {
 
 };
 
-function TestFunction() {
-    ajaxPromise("GET","JSON",friendlyURL("?module=login&op=submit_login"))
-    .then(function(result){
-        console.log(result);
-    }).catch(function(error){
-        console.log(error)
-    }) 
-    
-}
 
 $(document).ready(function () {
     changeForm();
-    submitValidateLogin();
-    // TestFunction();
-    
+    submitValidateLogin();    
 });

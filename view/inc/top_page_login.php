@@ -46,6 +46,9 @@
 		<!-- Register js -->
 		<script src="<?php echo JS_VIEW_LOGIN ?>register.js"></script>
 
+		<!-- Verify js -->
+		<script src="<?php echo JS_VIEW_LOGIN ?>verify.js"></script>
+
 		<!-- Main js -->
 		<script src="<?php echo SITE_PATH ?>view/js/main.js"></script>
 

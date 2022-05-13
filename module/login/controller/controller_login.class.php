@@ -3,6 +3,9 @@
 		function login(){
 			common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'login.html');
         }
+        function verify() {
+            common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'verify.html');
+        }
         function submit_login(){
 			echo json_encode(common::load_model('login_model','submit_login_model',$_POST));
         }
@@ -26,6 +29,9 @@
         }
         function refresh_token() {
             echo json_encode(common::load_model('login_model','refresh_token_model',apache_request_headers()["token"]));
+        }
+        function verify_user() {
+            echo json_encode(common::load_model('login_model','verify_user_model',$_GET["param"]));
         }
     };
 ?>
