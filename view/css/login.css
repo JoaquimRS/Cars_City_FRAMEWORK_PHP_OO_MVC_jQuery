@@ -357,3 +357,21 @@ input {
     color: red;
     
 }
+
+.social_login {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+.white-line {
+    margin-top: 30px;
+    margin-left: 20%;
+    width: 60%;
+    border: 1px solid white;
+    
+}
+
+.rrss_img {
+    margin-top: 20px;
+    margin-left: 15px;
+}

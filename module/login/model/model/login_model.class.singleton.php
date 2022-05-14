@@ -19,6 +19,9 @@
         public function submit_register_model($infoRegister) {
             return $this -> bll -> submit_register_BLL($infoRegister);
         }
+        public function sign_in_model($infoUser) {
+            return $this -> bll -> sign_in_BLL(json_decode(json_encode($infoUser)));
+        }
         public function data_user_model($token) {
             return $this -> bll -> data_user_BLL($token);
         }

@@ -26,6 +26,10 @@
         <uri>submit_register</uri>
     </function>
     <function>
+        <name>sign_in</name>
+        <uri>sign_in</uri>
+    </function>
+    <function>
         <name>data_user</name>
         <uri>data_user</uri>
     </function>

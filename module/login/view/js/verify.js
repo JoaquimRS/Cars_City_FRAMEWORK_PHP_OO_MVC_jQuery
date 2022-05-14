@@ -75,16 +75,6 @@ function checkVerify(){
 
 }
 
-function TestFunction() {
-    ajaxPromise("GET","JSON",friendlyURL("?module=login&op=submit_login"))
-    .then(function(result){
-        console.log(result);
-    }).catch(function(error){
-        console.log(error)
-    }) 
-    
-}
-
 
 $(document).ready(function () {
     checkVerify();

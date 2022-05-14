@@ -34,7 +34,6 @@ function refresh_cookie() {
         if (localStorage.getItem("token")) {
             ajaxPromise("POST","JSON",friendlyURL("?module=login&op=refresh_cookie"))
                 .then((jsonRefreshCookie)=>{
-                    
                 }).catch(()=>{
                     console.log("Error Refresh Cookie");
                 })
@@ -48,6 +47,7 @@ function refresh_token(){
         if (localStorage.getItem("token")) {
             ajaxPromiseToken("POST","JSON",friendlyURL("?module=login&op=refresh_token"))
                 .then((jsonToken)=>{
+                    console.log(jsonToken);
                     if (jsonToken==false) {
                         logout({error:"12",title:"Error Usuario",desc:"Por favor vuelva a iniciar sesión"})
                     } else {

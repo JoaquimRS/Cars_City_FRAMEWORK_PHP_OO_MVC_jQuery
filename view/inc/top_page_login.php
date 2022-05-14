@@ -8,9 +8,14 @@
 	<head>
 		<title>Cars City</title>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="view/img/ximo.png" />
+		<link rel="icon" type="image/png" href="<?php echo SITE_PATH ?>view/img/ximo.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 			
+		<!-- Font Awesome -->
+		<script src="https://kit.fontawesome.com/f85529e5a8.js" crossorigin="anonymous"></script>
+
+		<!-- Auth0 -->
+		<script src="https://cdn.auth0.com/js/auth0/9.2.2/auth0.min.js"></script>
 		<!-- CSS plantilla-->
 		<link href="<?php echo SITE_PATH ?>view/inc/assets/css/main.css" rel="stylesheet" />
 		

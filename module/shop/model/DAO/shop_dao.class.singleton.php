@@ -221,18 +221,15 @@
             $db->ejecutar($update_views);
             return "View Incremented";
         }
-        public function select_user_likes($db,$user) {
+        public function select_user_likes($db,$user_id) {
             $sql = "SELECT id_coche FROM favoritos AS f 
             INNER JOIN usuarios AS u 
             ON f.id_usuario=u.id
-            WHERE usuario LIKE BINARY '$user';";
+            WHERE id = '$user_id';";
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }
-        public function mod_user_like($db,$user,$idCar) {
-            $sql_user_id = "SELECT id FROM usuarios WHERE usuario LIKE BINARY '$user';";
-            $user = $db->ejecutar($sql_user_id);
-            $user_id = $db->listar_unico($user)->id;
+        public function mod_user_like($db,$user_id,$idCar) {
             $sql = "CALL likes($user_id,$idCar);";
             $stmt = $db->ejecutar($sql);
             return $db->listar_unico($stmt);

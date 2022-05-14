@@ -20,14 +20,14 @@
 		public function submit_login_BLL($infoLogin) {
             $password = $infoLogin['log_password'];
             $user = $infoLogin['log_username'];
-            $res_user = $this -> dao -> select_user($this->db,$user);
+            $res_user = $this -> dao -> select_user($this->db,$user,"cars-city");
             if(!isset($res_user)){
                 return array('error'=>'Usuario o contraseña incorrectos','src'=>'error_login');
             } else {
                 if (password_verify($password,$res_user->contrasena)){
                     if ($res_user->verificado==1){
-                        $token = middleware_auth::encode($user);
-                        $_SESSION['user'] = $user;
+                        $token = middleware_auth::encode($res_user->id);
+                        $_SESSION['id'] = $res_user->id;
                         $_SESSION['time'] = time();
                         return $token;
                     } else{
@@ -41,11 +41,12 @@
         public function submit_register_BLL($infoRegister) {
             $check = true;
             $token = common::generate_token_secure(20);
+            $uuid = "cars-city|".common::generate_token_secure(10);
             $password_hash = password_hash($infoRegister['reg_password'],PASSWORD_DEFAULT);
             $avatar = "https://avatars.dicebear.com/api/avataaars/" . $infoRegister['reg_username'] . ".svg?b=%23c2c2c2&r=50";
-            $infoUser = json_decode(json_encode(['user' => $infoRegister['reg_username'], 'email' => $infoRegister['reg_email'], 'password' => $password_hash, 'avatar' => $avatar, 'token'=> $token]));
-            $check_user = $this -> dao -> select_user($this->db,$infoUser->user);
-            $check_email = $this -> dao -> select_user_email($this->db,$infoUser->email);
+            $infoUser = json_decode(json_encode(['uuid'=>$uuid,'user' => $infoRegister['reg_username'], 'email' => $infoRegister['reg_email'], 'password' => $password_hash, 'avatar' => $avatar, 'token'=> $token]));
+            $check_user = $this -> dao -> select_user($this->db,$infoUser->user,"cars-city");
+            $check_email = $this -> dao -> select_user_email($this->db,$infoUser->email,"cars-city");
             if (isset($check_user)) {
                 $check = false;
                 return array('error'=>'Usuario no disponible','src'=>'error_reg_username');
@@ -68,31 +69,51 @@
                 return array('error'=>'Algo ha ido mal al crear el token','src'=>'error_reg');
             }
 		}
+
+        public function sign_in_BLL($infoUser){
+            $res_user = $this -> dao -> select_user($this->db,$infoUser->user,$infoUser->entity);
+
+            if (isset($res_user)){
+                $token = middleware_auth::encode($res_user->id);
+                $_SESSION['id'] = $res_user->id;
+                $_SESSION['time'] = time();
+                return $token;
+            } else {
+                $new_user = $this -> dao -> register_social_user($this->db,$infoUser);
+                if ($new_user){
+                    $token = middleware_auth::encode($res_user->id);
+                    $_SESSION['id'] = $res_user->id;
+                    $_SESSION['time'] = time();
+                    return $token;
+                }
+            }
+            return array('error'=>'Algo ha ido mal al crear el token','src'=>'error_login');
+        }
         public function data_user_BLL($token){
-            $user = middleware_auth::decode($token)->name;
+            $user = middleware_auth::decode($token)->id;
             if ($user==false){
                 return false;
             }
-            $res_user = $this -> dao -> select_user($this->db,$user);
+            $res_user = $this -> dao -> select_user_id($this->db,$user);
             return $res_user;
         }
 
         public function logout_BLL(){
-            $_SESSION['user'] = "";
+            $_SESSION['id'] = "";
             $_SESSION['time'] = "";
             session_destroy();
-            return $_SESSION['user'];
+            return $_SESSION['id'];
         }
 
         public function control_user_BLL($token){
-            if (!isset($_SESSION['user'])){
+            if (!isset($_SESSION['id'])){
                 return false;
             } else {
-                $user = middleware_auth::decode($token)->name;
+                $user = middleware_auth::decode($token)->id;
                 if ($user==false){
                     return false;
                 }
-                if ($user == $_SESSION['user']){
+                if ($user == $_SESSION['id']){
                     return true;
                 } else {
                     return false;
@@ -119,11 +140,11 @@
         }
 
         function refresh_token_BLL($token) {
-            $user = middleware_auth::decode($token)->name;
+            $user = middleware_auth::decode($token)->id;
             if ($user==false){
                 return false;
             }
-            if ($user == $_SESSION['user']) {
+            if ($user == $_SESSION['id']) {
                 $new_token = middleware_auth::encode($user);
                 return $new_token;
             } else {
@@ -155,7 +176,7 @@
         }
         function recover_email_BLL($userEmail) {
             $token = common::generate_token_secure(20);
-            $user_info = $this -> dao -> select_user_email($this->db,$userEmail);
+            $user_info = $this -> dao -> select_user_email($this->db,$userEmail,"cars-city");
             $user_status = $this -> dao -> change_user_status($this->db,$user_info->id,$token);
             if(!isset($user_info)){
                 exit;

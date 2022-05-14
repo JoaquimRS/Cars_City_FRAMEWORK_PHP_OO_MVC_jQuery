@@ -1,3 +1,84 @@
+function socialSignIn(){
+    var webAuth = new auth0.WebAuth({
+        domain: 'joaquimdaweb.eu.auth0.com',
+        clientID: '2Fq12TVKMTYGGIoukszstJOa3GBEfHdd',
+        redirectUri: 'http://ximo.com/tema6_ximo/4_framework_PHP_OO_MVC/login/login/',
+        audience: 'https://' + 'joaquimdaweb.eu.auth0.com' + '/userinfo',
+        responseType: 'token id_token',
+        scope: 'openid profile email user user:email',
+        leeway: 60
+    });
+
+    $('#github').click(function(e) {
+        e.preventDefault();
+        localStorage.setItem("SocialUser","github")
+        webAuth.authorize({connection: 'github'});
+      });
+
+    $('#google').click(function(e) {
+        e.preventDefault();
+        localStorage.setItem("SocialUser","google-oauth2")
+        webAuth.authorize({connection: 'google-oauth2'});
+    });
+    
+    function regSocialUser(profile) {
+        var userInfo
+        switch (localStorage.getItem("SocialUser")) {
+            case "github":
+                userInfo = {
+                    uuid: profile.sub,
+                    user: profile.nickname,
+                    email: "https://github.com/"+profile.nickname,
+                    avatar: profile.picture,
+                    entity: "github"
+                }
+                break;
+            case "google-oauth2":
+                userInfo = {
+                    uuid: profile.sub,
+                    user: profile.nickname,
+                    email: profile.email,
+                    avatar: profile.picture
+                }
+                break;
+        }
+        ajaxPromise("POST","JSON",friendlyURL("?module=login&op=sign_in"),userInfo)
+        .then(function(json){
+            check=true
+            try {
+                document.getElementById(json.src).innerHTML=json.error
+                check=false
+                toastr.error(json.error);
+            } catch (error) {
+            }
+            if (json.msg){
+                toastr.info(json.msg)
+                check=false;
+            }
+            if (check){
+                localStorage.setItem('token',json)
+                loadLastLocation();
+            }
+        }).catch(function(){
+            console.log("Error Login")
+        });
+
+    }
+
+    function handleAuthentication() {
+      webAuth.parseHash(function(err, authResult) {
+          if (authResult && authResult.accessToken && authResult.idToken) {
+            window.location.hash = '';
+            webAuth.client.userInfo(authResult.accessToken, function(err, profile) {
+                regSocialUser(profile)
+            });
+        }
+      });
+    }
+  
+    handleAuthentication();
+}
+
 function validateUserLog(user) {
     if (user.length > 0){
         var reg = /^[a-zA-Z0-9_\.]+$/;
@@ -156,13 +237,10 @@ function changeForm() {
     $(document).on("click","#forgot-pass", ()=>{
         window.location.href = friendlyURLLogin("ask_email")
     })
-    
-    
-
 };
-
 
 $(document).ready(function () {
     changeForm();
-    submitValidateLogin();    
+    submitValidateLogin();
+    socialSignIn();    
 });

@@ -12,22 +12,31 @@
             return self::$_instance;
         }
 
-        public function select_user($db,$user) {
-            $sql = "SELECT * FROM usuarios WHERE usuario = '$user';";
+        public function select_user($db,$user,$entity) {
+            $sql = "SELECT * FROM usuarios WHERE usuario = '$user' AND uuid LIKE '$entity%';";
             $stmt = $db->ejecutar($sql);
             return $db->listar_unico($stmt);
         }
-        public function select_user_email($db,$email) {
-            $sql = "SELECT * FROM usuarios WHERE email = '$email';";
+        public function select_user_id($db,$userID) {
+            $sql = "SELECT * FROM usuarios WHERE id = '$userID';";
+            $stmt = $db->ejecutar($sql);
+            return $db->listar_unico($stmt);
+        }
+        public function select_user_email($db,$email,$entity) {
+            $sql = "SELECT * FROM usuarios WHERE email = '$email' AND uuid LIKE '$entity%';";
             $stmt = $db->ejecutar($sql);
             return $db->listar_unico($stmt);
         }
         public function register_user($db,$infoUser) {
-            $sql = "INSERT INTO usuarios(usuario,contrasena,email,tipo,avatar,verificado,token) VALUES('$infoUser->user', '$infoUser->password', '$infoUser->email','client','$infoUser->avatar',0,'$infoUser->token');";
+            $sql = "INSERT INTO usuarios(uuid,usuario,contrasena,email,tipo,avatar,verificado,token) VALUES('$infoUser->uuid','$infoUser->user', '$infoUser->password', '$infoUser->email','client','$infoUser->avatar',0,'$infoUser->token');";
             $stmt = $db->ejecutar($sql);
             return $stmt;
         }
-
+        public function register_social_user($db,$infoUser) {
+            $sql = "INSERT INTO usuarios(uuid,usuario,email,tipo,avatar,verificado) VALUES('$infoUser->uuid','$infoUser->user','$infoUser->email','client','$infoUser->avatar',1);";
+            $stmt = $db->ejecutar($sql);
+            return $stmt;
+        }
         public function check_user($db,$token) {
             $sql = "SELECT id,verificado FROM usuarios WHERE token='$token'";
             $stmt = $db->ejecutar($sql);
