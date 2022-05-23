@@ -55,7 +55,7 @@ _Website of second hand cars that allows you to login, register, sign up, see al
 | Shop | Brands-Models, Fuels, Categories, Cities, Cars, Related-Cars, Car-Details, Car-Images([Carousel]), Filter-Cars, Views, Likes|
 | Contact | Send contact Us([MailGun])|
 | Search | Brands, Categories, Cities, Filter-Cities|
-| Login | Login, Verify([MailGun]), Recover-Password([MailGun]), Ask_email, Sign_In, Data-User([JWT]), Logout|
+| Login | Login, Verify([MailGun]), Recover-Password([MailGun]) Sign In, Data-User([JWT]), Logout|
 | Secure Login | Control-User, Activity-User, Refresh-Cookie, Refresh-Token([JWT])|
 
 
