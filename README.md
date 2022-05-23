@@ -8,6 +8,7 @@ _Website of second hand cars that allows you to login, register, sign up, see al
 * Built With
 * Template
 * Features
+* SecuryLogin
 * Working in all website
 * License -->
 
@@ -32,30 +33,50 @@ _Website of second hand cars that allows you to login, register, sign up, see al
 [OOP]: <https://en.wikipedia.org/wiki/Object-oriented_programming>
 [jQuery]: <http://jquery.com>
 [js]: <https://es.wikipedia.org/wiki/JavaScript>
+[JWT]: <https://jwt.io/>
+[MailGun]: <https://www.mailgun.com/es/>
+[Carousel]: <https://swiperjs.com/>
+[Arcana | HTML5 UP]: <https://html5up.net/arcana>
+[toastr]: <https://codeseven.github.io/toastr/>
+[GMaps]: <https://developers.google.com/maps?hl=es-419>
+[Auth0]: <https://auth0.com/es>
+[GitHub]: <https://github.com/>
+[Google-oauth]: <https://developers.google.com/identity/sign-in/web/sign-in>
 
 ## TEMPLATE
 
-<!-- * [Spicyo] - Used for header, menu and footer. -->
-
-<!-- [Spicyo]: <https://templatemo.com/tm-564-plot-listing> -->
+* [Arcana | HTML5 UP] - Used for all the aplication.
 
 ## FEATURES
 
 | Page | Features |
 |---------|-------------|
-| Home | Carrousel of brands, categories, fueltypes, other searchs and news|
-| Shop | List, Pagination, Search view, No result view, Details, Filters, Map|
-| Products list | Datatable, Modal|
-| Contact | Contact form whith SMTP|
-| Login | Register, Login, Social Login and Register, Email Verification, JWT, Recover Password|
+| Home | Brands([Carousel]), Categories, Fuels and News|
+| Shop | Brands-Models, Fuels, Categories, Cities, Cars, Related-Cars, Car-Details, Car-Images([Carousel]), Filter-Cars, Views, Likes|
+| Contact | Send contact Us([MailGun])|
+| Search | Brands, Categories, Cities, Filter-Cities|
+| Login | Login, Verify([MailGun]), Recover-Password([MailGun]), Ask_email, Sign_In, Data-User([JWT]), Logout|
+| Secure Login | Control-User, Activity-User, Refresh-Cookie, Refresh-Token([JWT])|
 
 
+## SECURE LOGIN
+* Control-User
+   - Check if the **Token-User** is the same as the **Cookie-User**
+* Activity-User
+   - Check if the **Cookie-User** is **Active** : MAX(**5 min**)
+* Refresh-Cookie
+   - Generate **New Cookie** if the user is **Active**
+* Refresh-Token
+   - If the user still active, generate **New Token** that expires in **10 min**
 
 ## WORKING IN ALL WEBSITE
 
-* Translate
-* Loading screen
-* GMaps
-* SMTP
-
+* Translate : Spanish, Valencian, English
+* Toastr : [toastr]
+* GMaps : [GMaps]
+* MailGun : [MailGun]
+* Middleware : [JWT]
+* Auth0 : [Auth0]
+  - GitHub : [GitHub]
+  - Google : [Google-oauth]
  
